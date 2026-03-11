@@ -4,19 +4,16 @@ public class PalindromeCheckerApp {
 
         String word = "madam";
 
-        java.util.Queue<Character> queue = new java.util.LinkedList<>();
-        java.util.Stack<Character> stack = new java.util.Stack<>();
+        java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
 
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            queue.add(ch);
-            stack.push(ch);
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
                 break;
             }
